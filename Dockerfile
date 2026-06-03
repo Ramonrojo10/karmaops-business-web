@@ -1,6 +1,14 @@
-FROM nginx:1.27-alpine
+FROM node:20-alpine
 
-COPY web /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
+COPY package.json package-lock.json* ./
+RUN npm install --omit=dev
+
+COPY server.js ./
+COPY web ./web
+
+ENV PORT=80
 EXPOSE 80
+
+CMD ["npm", "start"]

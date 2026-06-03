@@ -20,8 +20,14 @@ revealItems.forEach((item, index) => {
 const form = document.querySelector(".lead-form");
 const statusEl = document.querySelector(".form-status");
 
-form?.addEventListener("submit", (event) => {
+function saveLeadLocally(lead) {
+  const currentLeads = JSON.parse(localStorage.getItem("karmaops_leads") || "[]");
+  localStorage.setItem("karmaops_leads", JSON.stringify([lead, ...currentLeads]));
+}
+
+form?.addEventListener("submit", async (event) => {
   event.preventDefault();
+  statusEl.textContent = "Enviando señal...";
 
   const formData = new FormData(form);
   const lead = {
@@ -35,9 +41,21 @@ form?.addEventListener("submit", (event) => {
     createdAt: new Date().toISOString(),
   };
 
-  const currentLeads = JSON.parse(localStorage.getItem("karmaops_leads") || "[]");
-  localStorage.setItem("karmaops_leads", JSON.stringify([lead, ...currentLeads]));
+  try {
+    const response = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(lead),
+    });
 
-  form.reset();
-  statusEl.textContent = "Señal recibida. Te responderemos con el siguiente paso.";
+    if (!response.ok) {
+      throw new Error(`Lead API failed with ${response.status}`);
+    }
+
+    form.reset();
+    statusEl.textContent = "Señal recibida. Te responderemos con el siguiente paso.";
+  } catch (_error) {
+    saveLeadLocally(lead);
+    statusEl.textContent = "Señal guardada. Si el envio falla, tambien queda registrada localmente.";
+  }
 });
