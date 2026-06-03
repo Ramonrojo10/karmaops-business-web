@@ -458,6 +458,7 @@ h1 span {
 .process-section,
 .showcase-section,
 .portfolio-section,
+.pathways-section,
 .contact-section {
   padding: clamp(72px, 10vw, 132px) clamp(18px, 5vw, 72px);
   border-top: 1px solid rgba(230, 220, 196, 0.08);
@@ -676,6 +677,89 @@ h1 span {
   margin-top: 28px;
   padding-left: 18px;
   border-left: 1px solid rgba(217, 182, 106, 0.48);
+}
+
+.pathway-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pathway-card {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: clamp(24px, 3.4vw, 42px);
+  border: 1px solid rgba(230, 220, 196, 0.18);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(217, 182, 106, 0.18), transparent 28%),
+    radial-gradient(circle at 12% 84%, rgba(45, 212, 168, 0.12), transparent 30%),
+    linear-gradient(150deg, rgba(246, 240, 228, 0.06), transparent 50%),
+    #0f1317;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.18);
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.pathway-card::before {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 86px;
+  height: 86px;
+  content: "";
+  border-top: 1px solid rgba(217, 182, 106, 0.42);
+  border-right: 1px solid rgba(217, 182, 106, 0.42);
+}
+
+.pathway-card::after {
+  position: absolute;
+  top: 38px;
+  right: 38px;
+  content: "Abrir";
+  color: var(--gold-soft);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pathway-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(217, 182, 106, 0.44);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(217, 182, 106, 0.24), transparent 30%),
+    radial-gradient(circle at 12% 84%, rgba(45, 212, 168, 0.16), transparent 30%),
+    linear-gradient(150deg, rgba(246, 240, 228, 0.08), transparent 50%),
+    #10151a;
+}
+
+.pathway-card span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pathway-card h3 {
+  max-width: 760px;
+  margin-bottom: 18px;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.3vw, 4rem);
+  line-height: 1;
+}
+
+.pathway-card p {
+  max-width: 640px;
+  margin-bottom: 0;
+  color: #d5ccba;
+  line-height: 1.68;
 }
 
 .capability-grid {
@@ -967,6 +1051,10 @@ h1 span {
   }
 
   .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pathway-grid {
     grid-template-columns: 1fr;
   }
 
