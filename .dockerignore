@@ -1,0 +1,11 @@
+.git
+.DS_Store
+.env
+.env.*
+envs/
+node_modules/
+*.log
+plan/
+skills/
+STATUS.md
+README.md
