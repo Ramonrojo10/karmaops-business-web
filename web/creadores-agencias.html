@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="KarmaOps ayuda a creadores, freelancers y agencias a convertir contenido, leads y entregas en sistemas mas ordenados." />
+    <title>KarmaOps | Creadores y agencias</title>
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=20260603-growth1" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header" data-reveal>
+        <a class="brand" href="/" aria-label="KarmaOps inicio"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">KARMAOPS</span></a>
+        <nav class="site-nav" aria-label="Navegacion principal">
+          <a href="/">Home</a>
+          <a href="#sistema">Sistema</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a class="header-action" href="#contacto">Colaborar</a>
+      </header>
+
+      <main>
+        <section class="hero-section landing-hero" aria-labelledby="hero-title">
+          <div class="hero-grid" aria-hidden="true"></div>
+          <div class="hero-content">
+            <p class="eyebrow" data-reveal>Creadores y agencias</p>
+            <h1 id="hero-title" data-reveal>Contenido, leads y clientes <span>sin vivir en desorden.</span></h1>
+            <p class="hero-copy" data-reveal>
+              Para creadores, freelancers y agencias que ya venden o publican, pero necesitan convertir ejecucion,
+              seguimiento y entrega en un sistema mas claro.
+            </p>
+            <div class="hero-actions" data-reveal>
+              <a class="primary-button" href="#contacto">Hablar de colaboracion</a>
+              <a class="secondary-button" href="#sistema">Ver enfoque</a>
+            </div>
+          </div>
+          <div class="hero-orb" data-reveal aria-hidden="true">
+            <div class="brand-mark large"></div>
+            <span class="orb-line one"></span><span class="orb-line two"></span><span class="orb-line three"></span>
+          </div>
+        </section>
+
+        <section class="capabilities-section" id="sistema">
+          <div class="section-heading story-heading" data-reveal>
+            <p class="eyebrow">Sistema</p>
+            <h2>Cuando ya hay movimiento, el problema deja de ser crear mas. El problema es no perder control.</h2>
+          </div>
+          <div class="story-frame">
+            <article class="story-panel" data-reveal><span>01</span><h3>Contenido</h3><p>Convertir ideas, documentos y materiales en piezas que comuniquen mejor.</p></article>
+            <article class="story-panel emphasized" data-reveal><span>02</span><h3>Captura</h3><p>Que cada respuesta, comentario o formulario llegue con contexto.</p></article>
+            <article class="story-panel" data-reveal><span>03</span><h3>Entrega</h3><p>Ordenar procesos repetibles para no depender de memoria o urgencia.</p></article>
+            <article class="story-panel" data-reveal><span>04</span><h3>Escala</h3><p>Preparar lo que despues se puede delegar, documentar o automatizar.</p></article>
+          </div>
+        </section>
+
+        <section class="contact-section" id="contacto" aria-labelledby="contact-title">
+          <div class="contact-copy" data-reveal>
+            <p class="eyebrow">Colaboracion</p>
+            <h2 id="contact-title">Si ya tienes clientes, contenido o demanda, ordenemos la parte que pesa.</h2>
+            <p>Cuéntame qué estás construyendo y dónde se está atorando la operación.</p>
+          </div>
+          <form class="lead-form" data-reveal>
+            <label>Nombre<input name="name" autocomplete="name" placeholder="Tu nombre" required /></label>
+            <label>Contacto<input name="contact" autocomplete="email" placeholder="Email o WhatsApp" required /></label>
+            <label>Interes principal<select name="interest" required><option value="">Selecciona una opcion</option><option>Quiero mejorar mi contenido</option><option>Quiero ordenar mis leads</option><option>Quiero mejorar entrega</option><option>Quiero colaborar white-label</option></select></label>
+            <label>Mensaje<textarea name="message" rows="4" placeholder="Cuentame que necesitas ordenar"></textarea></label>
+            <button class="primary-button" type="submit">Enviar señal</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js?v=20260603-growth1"></script>
+  </body>
+</html>

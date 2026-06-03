@@ -20,6 +20,25 @@ revealItems.forEach((item, index) => {
 const form = document.querySelector(".lead-form");
 const statusEl = document.querySelector(".form-status");
 
+function getTrackingContext() {
+  const params = new URLSearchParams(window.location.search);
+  const utm = {};
+
+  ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+    const value = params.get(key);
+    if (value) {
+      utm[key] = value;
+    }
+  });
+
+  return {
+    page: window.location.pathname,
+    fullUrl: window.location.href,
+    referrer: document.referrer || "",
+    utm,
+  };
+}
+
 function saveLeadLocally(lead) {
   const currentLeads = JSON.parse(localStorage.getItem("karmaops_leads") || "[]");
   localStorage.setItem("karmaops_leads", JSON.stringify([lead, ...currentLeads]));
@@ -37,6 +56,7 @@ form?.addEventListener("submit", async (event) => {
     interest: formData.get("interest"),
     message: formData.get("message"),
     source: "karmaops-business-web",
+    tracking: getTrackingContext(),
     status: "new",
     createdAt: new Date().toISOString(),
   };

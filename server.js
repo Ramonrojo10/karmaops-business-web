@@ -29,6 +29,14 @@ function clean(value, maxLength = 1200) {
   return String(value || "").trim().slice(0, maxLength);
 }
 
+function cleanObject(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return {};
+  }
+
+  return value;
+}
+
 function isConfigured() {
   return Boolean(smtpConfig.host && smtpConfig.auth.user && smtpConfig.auth.pass && leadToEmail);
 }
@@ -58,6 +66,10 @@ function buildLeadEmail(lead) {
     `Mensaje: ${lead.message || "Sin mensaje"}`,
     `Fecha: ${submittedAt}`,
     `Fuente: ${lead.source}`,
+    `Pagina: ${lead.tracking.page || "Sin pagina"}`,
+    `URL: ${lead.tracking.fullUrl || "Sin URL"}`,
+    `Referrer: ${lead.tracking.referrer || "Sin referrer"}`,
+    `UTM: ${Object.keys(lead.tracking.utm || {}).length ? JSON.stringify(lead.tracking.utm) : "Sin UTM"}`,
   ];
 
   return {
@@ -71,6 +83,11 @@ function buildLeadEmail(lead) {
         <p><strong>Mensaje:</strong><br>${escapeHtml(lead.message || "Sin mensaje")}</p>
         <p><strong>Fecha:</strong> ${escapeHtml(submittedAt)}</p>
         <p><strong>Fuente:</strong> ${escapeHtml(lead.source)}</p>
+        <hr>
+        <p><strong>Pagina:</strong> ${escapeHtml(lead.tracking.page || "Sin pagina")}</p>
+        <p><strong>URL:</strong> ${escapeHtml(lead.tracking.fullUrl || "Sin URL")}</p>
+        <p><strong>Referrer:</strong> ${escapeHtml(lead.tracking.referrer || "Sin referrer")}</p>
+        <p><strong>UTM:</strong> ${escapeHtml(Object.keys(lead.tracking.utm || {}).length ? JSON.stringify(lead.tracking.utm) : "Sin UTM")}</p>
       </div>
     `,
   };
@@ -80,6 +97,14 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true, mailConfigured: isConfigured() });
 });
 
+app.get("/negocios-locales", (_req, res) => {
+  res.sendFile(path.join(__dirname, "web", "negocios-locales.html"));
+});
+
+app.get("/creadores-agencias", (_req, res) => {
+  res.sendFile(path.join(__dirname, "web", "creadores-agencias.html"));
+});
+
 app.post("/api/leads", async (req, res) => {
   const lead = {
     name: clean(req.body.name, 120),
@@ -87,6 +112,12 @@ app.post("/api/leads", async (req, res) => {
     interest: clean(req.body.interest, 160),
     message: clean(req.body.message, 1400),
     source: clean(req.body.source, 160) || "karmaops-business-web",
+    tracking: {
+      page: clean(cleanObject(req.body.tracking).page, 220),
+      fullUrl: clean(cleanObject(req.body.tracking).fullUrl, 600),
+      referrer: clean(cleanObject(req.body.tracking).referrer, 600),
+      utm: cleanObject(cleanObject(req.body.tracking).utm),
+    },
   };
 
   if (!lead.name || !lead.contact || !lead.interest) {

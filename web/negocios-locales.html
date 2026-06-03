@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="KarmaOps ayuda a negocios locales a verse mejor, responder mejor y ordenar su operacion." />
+    <title>KarmaOps | Negocios locales</title>
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=20260603-growth1" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header" data-reveal>
+        <a class="brand" href="/" aria-label="KarmaOps inicio"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">KARMAOPS</span></a>
+        <nav class="site-nav" aria-label="Navegacion principal">
+          <a href="/">Home</a>
+          <a href="#diagnostico">Diagnostico</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a class="header-action" href="#contacto">Empezar</a>
+      </header>
+
+      <main>
+        <section class="hero-section landing-hero" aria-labelledby="hero-title">
+          <div class="hero-grid" aria-hidden="true"></div>
+          <div class="hero-content">
+            <p class="eyebrow" data-reveal>Negocios locales</p>
+            <h1 id="hero-title" data-reveal>Tu negocio puede verse mejor <span>sin volverse complicado.</span></h1>
+            <p class="hero-copy" data-reveal>
+              Para barberias, consultorios, estudios, servicios y negocios que ya trabajan, pero necesitan presencia,
+              respuesta y orden para que cada oportunidad no se pierda.
+            </p>
+            <div class="hero-actions" data-reveal>
+              <a class="primary-button" href="#contacto">Pedir diagnostico</a>
+              <a class="secondary-button" href="#diagnostico">Ver enfoque</a>
+            </div>
+          </div>
+          <div class="hero-orb" data-reveal aria-hidden="true">
+            <div class="brand-mark large"></div>
+            <span class="orb-line one"></span><span class="orb-line two"></span><span class="orb-line three"></span>
+          </div>
+        </section>
+
+        <section class="capabilities-section" id="diagnostico">
+          <div class="section-heading story-heading" data-reveal>
+            <p class="eyebrow">Enfoque</p>
+            <h2>Primero arreglamos lo que el cliente ve. Despues ordenamos lo que pasa cuando te escribe.</h2>
+          </div>
+          <div class="story-frame">
+            <article class="story-panel" data-reveal><span>01</span><h3>Imagen</h3><p>Que el negocio se perciba serio desde el primer contacto.</p></article>
+            <article class="story-panel emphasized" data-reveal><span>02</span><h3>Mensaje</h3><p>Que se entienda que haces, para quien y por que importa.</p></article>
+            <article class="story-panel" data-reveal><span>03</span><h3>Respuesta</h3><p>Que los mensajes y formularios no dependan de acordarte despues.</p></article>
+            <article class="story-panel" data-reveal><span>04</span><h3>Orden</h3><p>Que el seguimiento tenga pasos claros y no viva solo en WhatsApp.</p></article>
+          </div>
+        </section>
+
+        <section class="contact-section" id="contacto" aria-labelledby="contact-title">
+          <div class="contact-copy" data-reveal>
+            <p class="eyebrow">Diagnostico</p>
+            <h2 id="contact-title">Cuentame que negocio tienes y que parte se siente atorada.</h2>
+            <p>Responderemos con el siguiente paso. Los detalles se hablan despues de entender tu situacion.</p>
+          </div>
+          <form class="lead-form" data-reveal>
+            <label>Nombre<input name="name" autocomplete="name" placeholder="Tu nombre" required /></label>
+            <label>Contacto<input name="contact" autocomplete="email" placeholder="Email o WhatsApp" required /></label>
+            <label>Interes principal<select name="interest" required><option value="">Selecciona una opcion</option><option>Quiero verme mas profesional</option><option>Quiero atraer mas clientes</option><option>Quiero ordenar mis mensajes</option><option>Quiero delegar mejor</option></select></label>
+            <label>Mensaje<textarea name="message" rows="4" placeholder="Cuentame que quieres mejorar"></textarea></label>
+            <button class="primary-button" type="submit">Enviar señal</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js?v=20260603-growth1"></script>
+  </body>
+</html>
