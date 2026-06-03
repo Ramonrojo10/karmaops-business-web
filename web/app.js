@@ -39,5 +39,5 @@ form?.addEventListener("submit", (event) => {
   localStorage.setItem("karmaops_leads", JSON.stringify([lead, ...currentLeads]));
 
   form.reset();
-  statusEl.textContent = "Señal recibida. El siguiente paso sera conectar este flujo al CRM.";
+  statusEl.textContent = "Señal recibida. Te responderemos con el siguiente paso.";
 });
